@@ -144,5 +144,4 @@ $(document).on("click", "li", function() {
     // Add to alreadyGuessed array
     alreadyGuessed.push($(this).text());
   }
-  console.log(alreadyGuessed);
 });

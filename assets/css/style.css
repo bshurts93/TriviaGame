@@ -1,14 +1,39 @@
 /* GLOBAL */
+body {
+  background: #9cecfb; /* fallback for old browsers */
+  background: -webkit-linear-gradient(45deg, #0052d4, #65c7f7, #9cecfb);
+  background: linear-gradient(45deg, #0052d4, #65c7f7, #9cecfb);
+  height: 100vh;
+}
+
 h1,
 h2,
 h3 {
   text-align: center;
 }
 
+h1 {
+  font-family: "Special Elite", cursive;
+  font-size: 4rem;
+  padding-top: 30px;
+}
+
+/* BOOTSTRAP CLASSES */
+.jumbotron {
+  background-color: #b0ddf3;
+  border: 2px rgb(54, 118, 179) solid;
+  box-shadow: 0 0.5rem 2rem rgb(18, 66, 112);
+  padding: 2rem 2rem;
+}
+
+/* TITLE CARD */
+.title-card {
+  margin-top: 20px;
+}
+
 /* QUESTION BOX */
 .question-box {
   width: 70%;
-  background-color: rgb(209, 209, 209);
   margin: 0 auto;
   padding: 2rem;
 }
