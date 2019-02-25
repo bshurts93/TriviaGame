@@ -4,3 +4,17 @@ h2,
 h3 {
   text-align: center;
 }
+
+/* QUESTION BOX */
+.question-box {
+  width: 70%;
+  background-color: rgb(209, 209, 209);
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.question-box li {
+  display: inline-block;
+  margin: 0 auto;
+  margin-right: 2rem;
+}

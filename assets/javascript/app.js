@@ -49,10 +49,8 @@ function count() {
 }
 
 function start() {
-  if (!timeRunning) {
-    myInterval = setInterval(count, 1000);
-    timeRunning = true;
-  }
+  myInterval = setInterval(count, 1000);
+  timeRunning = true;
 }
 
 function stop() {
@@ -95,14 +93,8 @@ function showQuestions() {
 // ----------------- BUTTONS ---------------  //
 // ------------------------------------------ //
 startBtn.on("click", function() {
-  start();
-  showQuestions();
+  if (!timeRunning) {
+    start();
+    showQuestions();
+  }
 });
-
-// var sample = function() {
-//   var a = (b = 3);
-// };
-
-// sample();
-// console.log("Is a defined?", typeof a !== "undefined"); // a is defined as a variable within the function
-// console.log("Is b defined?", typeof b !== "undefined"); // b is never defined, either inside or outside of the function
