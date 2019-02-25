@@ -5,6 +5,10 @@ var timerNum = $("#timer-num");
 var currentTime = 15;
 var myInterval;
 var timeRunning = false;
+var correct = $("#correct");
+var correctCount = 0;
+var wrong = $("#wrong");
+var wrongCount = 0;
 
 var questionBox = $(".question-box");
 
@@ -96,6 +100,13 @@ function showQuestions() {
   }
 }
 
+function removeElement(arr, word) {
+  var index = arr.indexOf(word);
+  if (index > -1) {
+    arr.splice(index, 1);
+  }
+}
+
 // ------------------------------------------ //
 // ----------------- CLICKS ----------------  //
 // ------------------------------------------ //
@@ -109,6 +120,14 @@ startBtn.on("click", function() {
 
 $(document).on("click", "li", function() {
   if (correctAnswers.includes($(this).text())) {
-    console.log("correct!");
+    // Add to correct count
+    correctCount++;
+    // Push to DOM
+    correct.text(correctCount);
+    // Remove that element from correctAnswers to avoid multiple clicks
+    removeElement(correctAnswers, $(this).text());
+  } else if (!correctAnswers.includes($(this).text())) {
+    // Add to wrong count
+    // Push to DOM
   }
 });
