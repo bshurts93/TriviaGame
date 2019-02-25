@@ -2,6 +2,7 @@
 // --------------- VARIBALES ---------------  //
 // ------------------------------------------ //
 var timerNum = $("#timer-num");
+var timerLabel = $("#timer-label");
 var currentTime = 16;
 var myInterval;
 var timeRunning = false;
@@ -82,10 +83,11 @@ function count() {
     currentTime--;
     timerNum.text(currentTime);
   } else if (currentTime === 0) {
-    $("#timer-label").text("Time is up!");
     clearInterval(myInterval);
     // Disable li clicks
     $(document).off("click", "li");
+    // Set clock to not running
+    timeRunning = false;
   }
 }
 
@@ -99,7 +101,7 @@ function restart() {
   questionBox.empty();
   // Clear the running interval
   clearInterval(myInterval);
-  // Reset DOM time span
+  // Reset DOM time h3 and span
   timerNum.text(0);
   // Set clock to not running
   timeRunning = false;
@@ -115,37 +117,46 @@ function randomIndex(arr) {
 }
 
 function showQuestions() {
+  var usedIntervals = [];
   for (var i = 0; i < 4; i++) {
     var randInd = randomIndex(questions);
-    // Create h3 and display question
-    var newQuestion = $("<h3>");
-    newQuestion.text(questions[randInd].question);
 
-    // Create ul before filling it with lis
-    var newAnswerSet = $("<ul>");
+    if (!usedIntervals.includes(randInd)) {
+      usedIntervals.push(randInd);
+      // Create h3 and display question
+      var newQuestion = $("<h3>");
+      newQuestion.text(questions[randInd].question);
 
-    // Display new question to DOM
-    questionBox.append(newQuestion);
+      // Create ul before filling it with lis
+      var newAnswerSet = $("<ul>");
 
-    // Loop through quetion object and create li for each answer
-    for (var j = 0; j < questions[randInd].answers.length; j++) {
-      // Create li
-      newLi = $("<li>");
+      // Display new question to DOM
+      questionBox.append(newQuestion);
 
-      // Add answer to li
-      newLi.text(questions[randInd].answers[j]);
+      // Loop through quetion object and create li for each answer
+      for (var j = 0; j < questions[randInd].answers.length; j++) {
+        // Create li
+        newLi = $("<li>");
 
-      // Send to newAnswerSet
-      newAnswerSet.append(newLi);
+        // Add answer to li
+        newLi.text(questions[randInd].answers[j]);
 
-      // Display ul with lis
-      questionBox.append(newAnswerSet);
+        // Send to newAnswerSet
+        newAnswerSet.append(newLi);
+
+        // Display ul with lis
+        questionBox.append(newAnswerSet);
+      }
+    } else {
+      var newQuestion = $("<h3>");
+      newQuestion.text("FAILED LOOP, RECEIVED TOO MANY OF THE SAME INDEX");
+      questionBox.append(newQuestion);
     }
   }
 }
 
-function removeElement(arr, word) {
-  var index = arr.indexOf(word);
+function removeElement(arr, el) {
+  var index = arr.indexOf(el);
   if (index > -1) {
     arr.splice(index, 1);
   }
