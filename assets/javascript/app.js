@@ -2,10 +2,9 @@
 // --------------- VARIBALES ---------------  //
 // ------------------------------------------ //
 var timerNum = $("#timer-num");
-var currentTime;
+var currentTime = 5;
 var myInterval;
 var timeRunning = false;
-var time = 20;
 
 var questionBox = $(".question-box");
 
@@ -44,17 +43,18 @@ var questions = [
 // ----------------------------------------- //
 
 function count() {
-  currentTime = time--;
-  timerNum.text(currentTime);
+  if (currentTime > 0) {
+    currentTime--;
+    timerNum.text(currentTime);
+  } else if (currentTime === 0) {
+    alert("Time is up");
+    clearInterval(myInterval);
+  }
 }
 
 function start() {
   myInterval = setInterval(count, 1000);
   timeRunning = true;
-}
-
-function stop() {
-  clearInterval(myInterval);
 }
 
 // ----------------------------------------- //
@@ -92,6 +92,7 @@ function showQuestions() {
 // ------------------------------------------ //
 // ----------------- BUTTONS ---------------  //
 // ------------------------------------------ //
+
 startBtn.on("click", function() {
   if (!timeRunning) {
     start();
