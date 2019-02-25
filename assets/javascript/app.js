@@ -2,7 +2,7 @@
 // --------------- VARIBALES ---------------  //
 // ------------------------------------------ //
 var timerNum = $("#timer-num");
-var currentTime = 15;
+var currentTime = 16;
 var myInterval;
 var timeRunning = false;
 var correct = $("#correct");
@@ -13,6 +13,7 @@ var wrongCount = 0;
 var questionBox = $(".question-box");
 
 var startBtn = $("#start");
+var retryBtn = $("#restart");
 
 // ------------------------------------------ //
 // ------------- QUESTION DATA -------------  //
@@ -72,6 +73,19 @@ function start() {
   timeRunning = true;
 }
 
+function restart() {
+  // Remove all ul and li elements from the DOM
+  questionBox.empty();
+  // Clear the running interval
+  clearInterval(myInterval);
+  // Reset DOM time span
+  timerNum.text(0);
+  // Set clock to not running
+  timeRunning = false;
+  // Reset currentTime
+  currentTime = 16;
+}
+
 // ----------------------------------------- //
 // ---------- QUESTION FUNCTIONS ----------  //
 // ----------------------------------------- //
@@ -121,6 +135,8 @@ startBtn.on("click", function() {
     showQuestions();
   }
 });
+
+retryBtn.on("click", restart);
 
 $(document).on("click", "li", function() {
   if (
