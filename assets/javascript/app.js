@@ -40,6 +40,23 @@ var questions = [
       "www.creedthoughts.org/creedblog",
       "www.creedthoughts.io/mindofcreed"
     ]
+  }),
+  (q5 = {
+    question: "What name did Pam and Angela fight over for their babies?",
+    answers: ["Andrew", "James", "Phillip", "William"]
+  }),
+  (q6 = {
+    question: "Which of Angela's cats does Dwight freeze?",
+    answers: ["Bandit", "Sprinkles", "Sparkles", "Fluffy"]
+  }),
+  (q7 = {
+    question:
+      "At the infamous dinner party, what dish took over 3 hours to make?",
+    answers: ["Chili", "Tikka Masala", "Pork Roast", "Ossobuco"]
+  }),
+  (q8 = {
+    question: "Who started the fire?",
+    answers: ["Kevin", "Ryan", "Oscar", "Creed"]
   })
 ];
 
@@ -47,7 +64,11 @@ var correctAnswers = [
   "Kelly",
   "Chili's",
   "Gary",
-  "www.creedthoughts.gov.www/creedthoughts"
+  "www.creedthoughts.gov.www/creedthoughts",
+  "Phillip",
+  "Sprinkles",
+  "Ossobuco",
+  "Ryan"
 ];
 
 var alreadyGuessed = [];
@@ -89,11 +110,16 @@ function restart() {
 // ----------------------------------------- //
 // ---------- QUESTION FUNCTIONS ----------  //
 // ----------------------------------------- //
+function randomIndex(arr) {
+  return Math.floor(Math.random() * arr.length);
+}
+
 function showQuestions() {
-  for (var i = 0; i < questions.length; i++) {
+  for (var i = 0; i < 4; i++) {
+    var randInd = randomIndex(questions);
     // Create h3 and display question
     var newQuestion = $("<h3>");
-    newQuestion.text(questions[i].question);
+    newQuestion.text(questions[randInd].question);
 
     // Create ul before filling it with lis
     var newAnswerSet = $("<ul>");
@@ -102,12 +128,12 @@ function showQuestions() {
     questionBox.append(newQuestion);
 
     // Loop through quetion object and create li for each answer
-    for (var j = 0; j < questions[i].answers.length; j++) {
+    for (var j = 0; j < questions[randInd].answers.length; j++) {
       // Create li
       newLi = $("<li>");
 
       // Add answer to li
-      newLi.text(questions[i].answers[j]);
+      newLi.text(questions[randInd].answers[j]);
 
       // Send to newAnswerSet
       newAnswerSet.append(newLi);
