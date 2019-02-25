@@ -42,12 +42,14 @@ var questions = [
   })
 ];
 
-correctAnswers = [
+var correctAnswers = [
   "Kelly",
   "Chili's",
   "Gary",
   "www.creedthoughts.gov.www/creedthoughts"
 ];
+
+var alreadyGuessed = [];
 
 // ----------------------------------------- //
 // ------------ TIMER FUNCTIONS -----------  //
@@ -119,15 +121,28 @@ startBtn.on("click", function() {
 });
 
 $(document).on("click", "li", function() {
-  if (correctAnswers.includes($(this).text())) {
+  if (
+    correctAnswers.includes($(this).text()) && // If the word is in the correctAnswers array
+    !alreadyGuessed.includes($(this).text()) // If the word has not already been guessed
+  ) {
     // Add to correct count
     correctCount++;
     // Push to DOM
     correct.text(correctCount);
     // Remove that element from correctAnswers to avoid multiple clicks
     removeElement(correctAnswers, $(this).text());
-  } else if (!correctAnswers.includes($(this).text())) {
+    // Add to alreadyGuessed array
+    alreadyGuessed.push($(this).text());
+  } else if (
+    !correctAnswers.includes($(this).text()) && // If the word is not in the correctAnswers array
+    !alreadyGuessed.includes($(this).text()) // If the word has not already been guessed
+  ) {
     // Add to wrong count
+    wrongCount++;
     // Push to DOM
+    wrong.text(wrongCount);
+    // Add to alreadyGuessed array
+    alreadyGuessed.push($(this).text());
   }
+  console.log(alreadyGuessed);
 });
