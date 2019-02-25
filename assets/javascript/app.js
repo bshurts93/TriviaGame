@@ -108,5 +108,7 @@ startBtn.on("click", function() {
 });
 
 $(document).on("click", "li", function() {
-  console.log("li clicked");
+  if (correctAnswers.includes($(this).text())) {
+    console.log("correct!");
+  }
 });
