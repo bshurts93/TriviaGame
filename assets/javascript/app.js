@@ -2,7 +2,7 @@
 // --------------- VARIBALES ---------------  //
 // ------------------------------------------ //
 var timerNum = $("#timer-num");
-var currentTime = 5;
+var currentTime = 15;
 var myInterval;
 var timeRunning = false;
 
@@ -36,6 +36,13 @@ var questions = [
       "www.creedthoughts.io/mindofcreed"
     ]
   })
+];
+
+correctAnswers = [
+  "Kelly",
+  "Chili's",
+  "Gary",
+  "www.creedthoughts.gov.www/creedthoughts"
 ];
 
 // ----------------------------------------- //
@@ -90,7 +97,7 @@ function showQuestions() {
 }
 
 // ------------------------------------------ //
-// ----------------- BUTTONS ---------------  //
+// ----------------- CLICKS ----------------  //
 // ------------------------------------------ //
 
 startBtn.on("click", function() {
@@ -98,4 +105,8 @@ startBtn.on("click", function() {
     start();
     showQuestions();
   }
+});
+
+$(document).on("click", "li", function() {
+  console.log("li clicked");
 });

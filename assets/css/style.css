@@ -17,4 +17,10 @@ h3 {
   display: inline-block;
   margin: 0 auto;
   margin-right: 2rem;
+  color: blue;
+}
+
+.question-box li:hover {
+  color: aqua;
+  cursor: pointer;
 }
