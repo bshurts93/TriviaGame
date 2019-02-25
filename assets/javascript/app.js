@@ -63,7 +63,6 @@ function count() {
     $("#timer-label").text("Time is up!");
     clearInterval(myInterval);
     // Disable li clicks
-    $;
     $(document).off("click", "li");
   }
 }

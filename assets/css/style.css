@@ -5,6 +5,7 @@ body {
   background: linear-gradient(45deg, #0052d4, #65c7f7, #9cecfb);
   height: 100vh;
   font-family: "Anton", sans-serif;
+  padding-top: 20px;
 }
 
 h1,
@@ -29,31 +30,68 @@ li {
   font-size: 1.4rem;
   display: inline-block;
   margin: 0 auto;
+  padding: 0 1rem;
+  padding-top: 5px;
   margin-right: 2rem;
-  color: blue;
+  color: rgb(23, 23, 94);
+  border-radius: 5px;
+  transition: all 0.3s;
 }
 
 li:hover {
-  color: aqua;
+  color: rgb(71, 132, 160);
+  background-color: white;
   cursor: pointer;
 }
 
 /* BOOTSTRAP CLASSES */
 .jumbotron {
-  background-color: #b0ddf3;
-  border: 2px rgb(54, 118, 179) solid;
+  background-color: #b0ddf356;
+  border: 2px rgb(217, 222, 226) solid;
   box-shadow: 0 0.5rem 2rem rgb(18, 66, 112);
-  padding: 2rem 2rem;
+  padding: 1rem 2rem;
 }
 
 /* TITLE CARD */
 .title-card {
-  margin-top: 20px;
+  padding-top: 20px;
+}
+
+#start,
+#restart {
+  cursor: pointer;
+  font-family: "Special Elite", cursive;
+  margin: 0 auto;
+  padding: 0 1rem;
+  padding-top: 5px;
+  color: rgb(23, 23, 94);
+  border-radius: 5px;
+  transition: all 0.3s;
+}
+
+#start {
+  float: left;
+  margin-top: -70px;
+}
+
+#start:hover {
+  color: rgb(71, 160, 90);
+  background-color: white;
+}
+
+#restart {
+  float: right;
+  margin-top: -70px;
+}
+
+#restart:hover {
+  background-color: white;
+  color: rgb(190, 66, 66);
 }
 
 /* QUESTION BOX */
 .question-box {
-  width: 70%;
+  width: 80%;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 1rem 2rem;
 }
