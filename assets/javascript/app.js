@@ -60,8 +60,11 @@ function count() {
     currentTime--;
     timerNum.text(currentTime);
   } else if (currentTime === 0) {
-    alert("Time is up");
+    $("#timer-label").text("Time is up!");
     clearInterval(myInterval);
+    // Disable li clicks
+    $;
+    $(document).off("click", "li");
   }
 }
 
