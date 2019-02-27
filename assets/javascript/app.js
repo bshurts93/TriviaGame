@@ -3,7 +3,7 @@
 // ------------------------------------------ //
 var timerNum = $("#timer-num");
 var timerLabel = $("#timer-label");
-var currentTime = 16;
+var currentTime = 21;
 var myInterval;
 var timeRunning = false;
 var correct = $("#correct");
@@ -58,6 +58,33 @@ var questions = [
   (q8 = {
     question: "Who started the fire?",
     answers: ["Kevin", "Ryan", "Oscar", "Creed"]
+  }),
+  (q9 = {
+    question: "What a cappella group did Andy sing in?",
+    answers: [
+      "Here Comes Treble",
+      "Pitch Slapped",
+      "Light My Choir",
+      "Duly Noted"
+    ]
+  }),
+  (q10 = {
+    question:
+      "The serial criminal that is caught and goes on trial is known as the Scranton __________ .",
+    answers: ["Stabber", "Slicer", "Strangler", "Slayer"]
+  }),
+  (q11 = {
+    question: "Andy is a proud alumnus of what Ivy League school?",
+    answers: ["Cornell", "Dartmouth", "Harvard", "Princeton"]
+  }),
+  (q12 = {
+    question: "What is the name of Michael Scott's prized screenplay?",
+    answers: [
+      "Agent Michel Scarn",
+      "Threat Level Midnight",
+      "Firestorm",
+      "Prognosis Negative"
+    ]
   })
 ];
 
@@ -69,7 +96,10 @@ var correctAnswers = [
   "Phillip",
   "Sprinkles",
   "Ossobuco",
-  "Ryan"
+  "Ryan",
+  "Here Comes Treble",
+  "Strangler",
+  "Threat Level Midnight"
 ];
 
 var alreadyGuessed = [];
@@ -106,7 +136,7 @@ function restart() {
   // Set clock to not running
   timeRunning = false;
   // Reset currentTime
-  currentTime = 16;
+  currentTime = 21;
   // Reset scores
   correctCount = 0;
   wrongCount = 0;
@@ -171,6 +201,7 @@ function removeElement(arr, el) {
 // ----------------- CLICKS ----------------  //
 // ------------------------------------------ //
 
+// Start Game
 startBtn.on("click", function() {
   if (!timeRunning) {
     start();
@@ -178,8 +209,10 @@ startBtn.on("click", function() {
   }
 });
 
+// Restart Game
 retryBtn.on("click", restart);
 
+// Allow clicks on answers once displayed
 $(document).on("click", "li", function() {
   if (
     correctAnswers.includes($(this).text()) && // If the word is in the correctAnswers array

@@ -20,6 +20,10 @@ h1 {
   padding-top: 30px;
 }
 
+h3 {
+  letter-spacing: 1px;
+}
+
 ul {
   width: 100%;
   text-align: center;
@@ -49,7 +53,7 @@ li:hover {
 /* BOOTSTRAP CLASSES */
 .jumbotron {
   background-color: #b0ddf356;
-  border: 2px rgb(217, 222, 226) solid;
+  border: 5px rgb(217, 222, 226) solid;
   box-shadow: 0 0.5rem 2rem rgb(18, 66, 112);
   padding: 1rem 2rem;
 }
@@ -101,6 +105,10 @@ li:hover {
   width: 80%;
   margin: 0 auto;
   padding: 1rem 2rem;
+}
+
+.score-box {
+  padding: 1rem 0 1.5rem 0;
 }
 
 .correct {
