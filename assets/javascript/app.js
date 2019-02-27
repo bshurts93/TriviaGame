@@ -107,6 +107,11 @@ function restart() {
   timeRunning = false;
   // Reset currentTime
   currentTime = 16;
+  // Reset scores
+  correctCount = 0;
+  wrongCount = 0;
+  correct.text(correctCount);
+  wrong.text(wrongCount);
 }
 
 // ----------------------------------------- //
@@ -188,6 +193,8 @@ $(document).on("click", "li", function() {
     removeElement(correctAnswers, $(this).text());
     // Add to alreadyGuessed array
     alreadyGuessed.push($(this).text());
+    // Change style
+    $(this).addClass("correct");
   } else if (
     !correctAnswers.includes($(this).text()) && // If the word is not in the correctAnswers array
     !alreadyGuessed.includes($(this).text()) // If the word has not already been guessed
@@ -198,5 +205,17 @@ $(document).on("click", "li", function() {
     wrong.text(wrongCount);
     // Add to alreadyGuessed array
     alreadyGuessed.push($(this).text());
+    // Change style
+    $(this).addClass("incorrect");
   }
 });
+
+// OFFICE HOURS FUNCTION
+
+function isInteger(num) {
+  if (num === Math.floor(num)) {
+    return true;
+  } else {
+    return false;
+  }
+}

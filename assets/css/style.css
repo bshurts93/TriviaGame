@@ -84,7 +84,7 @@ li:hover {
 #start:hover,
 #restart:hover {
   background-color: white;
-  box-shadow: 0 0.5rem 1rem rgb(18, 66, 112);
+  box-shadow: 0 0.5rem 1rem rgb(70, 126, 179);
   transform: translateY(-3px);
 }
 
@@ -101,4 +101,14 @@ li:hover {
   width: 80%;
   margin: 0 auto;
   padding: 1rem 2rem;
+}
+
+.correct {
+  color: rgb(183, 212, 240);
+  background-color: rgb(71, 160, 90);
+}
+
+.incorrect {
+  color: rgb(183, 212, 240);
+  background-color: rgb(190, 66, 66);
 }
