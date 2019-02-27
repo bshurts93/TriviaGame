@@ -151,41 +151,51 @@ function randomIndex(arr) {
   return Math.floor(Math.random() * arr.length);
 }
 
+function shuffle(arr) {
+  var m = arr.length,
+    t,
+    i;
+
+  // While there remain elements to shuffle…
+  while (m) {
+    // Pick a remaining element…
+    i = Math.floor(Math.random() * m--);
+
+    // And swap it with the current element.
+    t = arr[m];
+    arr[m] = arr[i];
+    arr[i] = t;
+  }
+
+  return arr;
+}
+
 function showQuestions() {
-  var usedIntervals = [];
+  var shuffledQuestions = shuffle(questions);
   for (var i = 0; i < 4; i++) {
-    var randInd = randomIndex(questions);
+    // Create h3 and display question
+    var newQuestion = $("<h3>");
+    newQuestion.text(shuffledQuestions[i].question);
 
-    if (!usedIntervals.includes(randInd)) {
-      usedIntervals.push(randInd);
-      // Create h3 and display question
-      var newQuestion = $("<h3>");
-      newQuestion.text(questions[randInd].question);
+    // Create ul before filling it with lis
+    var newAnswerSet = $("<ul>");
 
-      // Create ul before filling it with lis
-      var newAnswerSet = $("<ul>");
+    // Display new question to DOM
+    questionBox.append(newQuestion);
 
-      // Display new question to DOM
-      questionBox.append(newQuestion);
+    // Loop through quetion object and create li for each answer
+    for (var j = 0; j < shuffledQuestions[i].answers.length; j++) {
+      // Create li
+      newLi = $("<li>");
 
-      // Loop through quetion object and create li for each answer
-      for (var j = 0; j < questions[randInd].answers.length; j++) {
-        // Create li
-        newLi = $("<li>");
+      // Add answer to li
+      newLi.text(shuffledQuestions[i].answers[j]);
 
-        // Add answer to li
-        newLi.text(questions[randInd].answers[j]);
+      // Send to newAnswerSet
+      newAnswerSet.append(newLi);
 
-        // Send to newAnswerSet
-        newAnswerSet.append(newLi);
-
-        // Display ul with lis
-        questionBox.append(newAnswerSet);
-      }
-    } else {
-      var newQuestion = $("<h3>");
-      newQuestion.text("FAILED LOOP, RECEIVED TOO MANY OF THE SAME INDEX");
-      questionBox.append(newQuestion);
+      // Display ul with lis
+      questionBox.append(newAnswerSet);
     }
   }
 }
