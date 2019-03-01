@@ -103,6 +103,21 @@ li:hover {
 }
 
 /* QUESTION BOX */
+#timer-label,
+#correct-label,
+#wrong-label {
+  z-index: 10;
+  padding: 1rem;
+  border-radius: 5px;
+  display: block;
+  padding-bottom: 2rem;
+}
+
+#correct-label,
+#wrong-label {
+  font-size: 2.5rem;
+}
+
 .question-box {
   width: 80%;
   margin: 0 auto;
@@ -110,7 +125,8 @@ li:hover {
 }
 
 .score-box {
-  padding: 1rem 0 1.5rem 0;
+  width: 17%;
+  position: fixed;
 }
 
 .correct {
