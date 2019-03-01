@@ -1,21 +1,24 @@
 // ------------------------------------------ //
 // --------------- VARIBALES ---------------  //
 // ------------------------------------------ //
-var timerNum = $("#timer-num");
-var timerLabel = $("#timer-label");
+// NUM VALUES
 var currentTime = 31;
 var myInterval;
 var timeRunning = false;
-var correct = $("#correct");
 var correctCount = 0;
-var wrong = $("#wrong");
 var wrongCount = 0;
+
+// DOM
+var correct = $("#correct");
+var wrong = $("#wrong");
+var timerNum = $("#timer-num");
+var timerLabel = $("#timer-label");
 var resultHead = $("#result-head");
 var totalDOM = $("#total");
 var resultsBox = $(".results-box");
-
 var questionBox = $(".question-box");
 
+// BTN
 var startBtn = $("#start");
 var retryBtn = $("#restart");
 
@@ -157,8 +160,12 @@ function timeUp() {
   $("li").addClass("end-game");
   totalDOM.text(correctCount + " out of " + questions.length);
 
-  if ((correct = questions.length)) {
+  if (correct === questions.length) {
     resultHead.text("Great Scott! You know your Dunder Mifflin facts!");
+  } else if (correct <= questions.length - 4) {
+    resultHead.text("Yeeeeeshhhh... Not too bad...");
+  } else {
+    resultHead.text("No! Please God No! Nooooooooo! Try again.");
   }
 }
 // ----------------------------------------- //

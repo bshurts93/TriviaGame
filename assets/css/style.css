@@ -131,4 +131,11 @@ li:hover {
 
 .results-box {
   display: none;
+  margin: 0 auto;
+}
+
+.total-h4 {
+  text-align: center;
+  padding-top: 2rem;
+  font-size: 2rem;
 }
