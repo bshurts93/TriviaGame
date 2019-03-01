@@ -3,13 +3,16 @@
 // ------------------------------------------ //
 var timerNum = $("#timer-num");
 var timerLabel = $("#timer-label");
-var currentTime = 21;
+var currentTime = 31;
 var myInterval;
 var timeRunning = false;
 var correct = $("#correct");
 var correctCount = 0;
 var wrong = $("#wrong");
 var wrongCount = 0;
+var resultHead = $("#result-head");
+var totalDOM = $("#total");
+var resultsBox = $(".results-box");
 
 var questionBox = $(".question-box");
 
@@ -99,6 +102,7 @@ var correctAnswers = [
   "Ryan",
   "Here Comes Treble",
   "Strangler",
+  "Cornell",
   "Threat Level Midnight"
 ];
 
@@ -118,6 +122,7 @@ function count() {
     $(document).off("click", "li");
     // Set clock to not running
     timeRunning = false;
+    timeUp();
   }
 }
 
@@ -136,14 +141,26 @@ function restart() {
   // Set clock to not running
   timeRunning = false;
   // Reset currentTime
-  currentTime = 21;
+  currentTime = 31;
   // Reset scores
   correctCount = 0;
   wrongCount = 0;
   correct.text(correctCount);
   wrong.text(wrongCount);
+  // Reset questionBox styles
+  questionBox.removeClass("end-game");
 }
 
+function timeUp() {
+  resultsBox.css("display", "block");
+  questionBox.addClass("end-game");
+  $("li").addClass("end-game");
+  totalDOM.text(correctCount + " out of " + questions.length);
+
+  if ((correct = questions.length)) {
+    resultHead.text("Great Scott! You know your Dunder Mifflin facts!");
+  }
+}
 // ----------------------------------------- //
 // ---------- QUESTION FUNCTIONS ----------  //
 // ----------------------------------------- //
@@ -172,7 +189,7 @@ function shuffle(arr) {
 
 function showQuestions() {
   var shuffledQuestions = shuffle(questions);
-  for (var i = 0; i < 4; i++) {
+  for (var i = 0; i < questions.length; i++) {
     // Create h3 and display question
     var newQuestion = $("<h3>");
     newQuestion.text(shuffledQuestions[i].question);
@@ -252,13 +269,3 @@ $(document).on("click", "li", function() {
     $(this).addClass("incorrect");
   }
 });
-
-// OFFICE HOURS FUNCTION
-
-function isInteger(num) {
-  if (num === Math.floor(num)) {
-    return true;
-  } else {
-    return false;
-  }
-}

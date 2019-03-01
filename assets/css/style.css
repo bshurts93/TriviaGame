@@ -3,6 +3,7 @@ body {
   background: #9cecfb; /* fallback for old browsers */
   background: -webkit-linear-gradient(45deg, #0052d4, #65c7f7, #9cecfb);
   background: linear-gradient(45deg, #0052d4, #65c7f7, #9cecfb);
+  background-attachment: fixed;
   height: 100vh;
   font-family: "Anton", sans-serif;
   padding-top: 20px;
@@ -27,6 +28,7 @@ h3 {
 ul {
   width: 100%;
   text-align: center;
+  margin-bottom: 4rem;
 }
 
 li {
@@ -119,4 +121,14 @@ li:hover {
 .incorrect {
   color: rgb(183, 212, 240);
   background-color: rgb(190, 66, 66);
+}
+
+.end-game {
+  color: gray;
+}
+
+/* RESUTLS BOX */
+
+.results-box {
+  display: none;
 }
